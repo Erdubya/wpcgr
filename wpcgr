@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# CONFIG
+wPath="/home/erik/Pictures/Wallpapers/Dystopia/"
+isDirectory=1
+rotTime=3600
+
+: '
+Changes the gnome wallpaper to a given file
+$1 - string - Location of the file
+'
+function changeWallpaper () {
+    if [[ -f $1 ]]; then
+        local uri=$(perl -MURI::file -e "print URI::file->new_abs('${1}')")
+        echo ${uri}
+    fi
+#        (gsettings set org.gnome.desktop.background picture-uri ${uri})
+}
+
+changeWallpaper ${wPath}"Shipyard.jpg"
